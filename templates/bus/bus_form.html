@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Bus</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+</head>
+
+<body class="bg-primary">
+
+
+    <section>
+        <div class="container-fluid bg-dark text-light w-25 p-4 mt-5 rounded">
+            <div class="row">
+                <div class="col-md-10 m-auto">
+                    <h2 class="fw-bolder">Add Bus</h2>
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <div class="d-flex justify-content-evenly">
+                            <button class="btn btn-warning" type="submit">Save</button>
+                            <a class="btn btn-secondary" href="{% url 'bus_list' %}">Back</a>
+                        </div>  
+
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+
+
+</body>
+
+</html>
