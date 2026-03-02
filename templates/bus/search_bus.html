@@ -1,0 +1,77 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 bg-danger m-auto p-2 rounded-3">
+            <div class="card bg-dark ">
+                <div class="card-body  rounded-3 bg-dark">
+                    <form method="GET">
+                        <div class="d-flex gap-5 mt-3">
+                            <div class="input-group w-50">
+                                <input class="form-control  border border-light" type="text" name="source"
+                                    placeholder="Source" required>
+                                <i class="bi bi-geo-fill   bg-dark p-2 border border-light rounded-end text-light"></i>
+                            </div>
+                            <div class="input-group w-50">
+                                <input class="form-control  border border-light " type="text" name="destination"
+                                    placeholder="Destination" required>
+                                <i
+                                    class="bi bi-geo-alt-fill bg-dark p-2 rounded-end  border border-light text-light"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <input class="form-control w-25 m-5 ms-0 border border-light" type="date" name="" id="">
+                        </div>
+                        <button class="btn btn-danger" type="submit">Search</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% if buses%}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 mt-5 ">
+            <div class="card ">
+                <div class="card-body ">
+                    {% for bus in buses %}
+                    <div>
+                        <span class="fs-4 ">
+                            {{ bus.bus_name }}
+                        </span>
+                        <h5>
+                            {{ bus.source }} → {{ bus.destination }}
+                        </h5>
+                          <h6>
+                          Arrival Time:  {{ bus.arrival_time }}
+                        </h6>
+                        <h6>
+                          Departure Time:  {{ bus.departure_time }}
+                        </h6>
+                        <h6>
+                            ₹{{ bus.price }}
+                        </h6>
+
+                    </div>
+                   
+
+                    {% empty %}
+                    <p>No buses found</p>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+
+{% endblock %}
